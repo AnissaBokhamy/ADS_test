@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AZs-Le-w9e">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -16,7 +16,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzK-VU-pCP">
-                                <rect key="frame" x="288" y="49" width="46" height="30"/>
+                                <rect key="frame" x="288.5" y="49" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -25,10 +27,11 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" allowsEditingTextAttributes="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wv-1k-NCY">
-                                <rect key="frame" x="228.5" y="79" width="165.5" height="90"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="229" y="84" width="165" height="100"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="vc2-dB-FGT"/>
+                                    <constraint firstAttribute="width" constant="165" id="TtE-C4-Eo9"/>
+                                    <constraint firstAttribute="height" constant="100" id="vc2-dB-FGT"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="UIScrollView">
@@ -52,15 +55,15 @@
                         <color key="backgroundColor" red="0.36862745098039218" green="0.68235294117647061" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fzK-VU-pCP" firstAttribute="centerX" secondItem="4wv-1k-NCY" secondAttribute="centerX" id="0LA-Ig-6cE"/>
-                            <constraint firstItem="4wv-1k-NCY" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.4" id="1cm-F4-JZB"/>
                             <constraint firstItem="39H-4b-hHM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="IPD-2G-lh3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="39H-4b-hHM" secondAttribute="trailing" constant="20" id="JTQ-eF-ALo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4wv-1k-NCY" secondAttribute="trailing" constant="20" id="YDe-3b-pUY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="39H-4b-hHM" secondAttribute="bottom" constant="30" id="YcI-cS-aoc"/>
                             <constraint firstItem="fzK-VU-pCP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="YdY-XJ-e3f"/>
-                            <constraint firstItem="4wv-1k-NCY" firstAttribute="top" secondItem="fzK-VU-pCP" secondAttribute="bottom" id="cDx-1v-WYn"/>
+                            <constraint firstItem="4wv-1k-NCY" firstAttribute="top" secondItem="fzK-VU-pCP" secondAttribute="bottom" constant="5" id="cDx-1v-WYn"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="MNW-iq-giV"/>
                     <connections>
                         <outlet property="button" destination="fzK-VU-pCP" id="0uo-UK-FIy"/>
                         <outlet property="popUpView" destination="39H-4b-hHM" id="RC1-YG-Por"/>
@@ -70,6 +73,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-23.188405797101453" y="62.946428571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yMd-Xx-2Bd">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="AZs-Le-w9e" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fyE-Oa-iUu">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Q9y-fE-tno"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m5I-Yb-cmw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-874" y="63"/>
         </scene>
     </scenes>
 </document>

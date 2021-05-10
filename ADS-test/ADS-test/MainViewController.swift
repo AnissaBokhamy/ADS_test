@@ -16,12 +16,15 @@ class MainViewController: UIViewController {
     
     // MARK: - Constants
     let defaultBlue = CGColor(red: 35, green: 56, blue: 152, alpha: 1)
-    let textSize: CGFloat = 12
+    let textSize: CGFloat = 14
     
     // MARK: - Properties
     private var timestamps: [Date] = []
 
     private var menuVC: MenuViewController!
+    
+    var menuVCLeadingConstraint: NSLayoutConstraint!
+    
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -37,22 +40,26 @@ class MainViewController: UIViewController {
     
     // MARK: - Helpers
     private func configureLayer() {
-        button.layer.borderColor = defaultBlue
-        textView.layer.borderColor = defaultBlue
+        button.layer.borderColor = UIColor.systemBlue.cgColor
+        button.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.systemBlue.cgColor
+        textView.layer.borderWidth = 1
     }
     
     private func configureMenuViewController() {
         menuVC = MenuViewController()
         menuVC.delegate = self
     }
-    
+
     private func configureMenuViewControllerLayout() {
+        menuVCLeadingConstraint = menuVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         NSLayoutConstraint.activate([
-            menuVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            menuVCLeadingConstraint,
+            menuVC.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4, constant: 20),
             menuVC.view.topAnchor.constraint(equalTo: view.topAnchor),
-            menuVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            menuVC.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4, constant: 20)
+            menuVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        menuVC.view.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func configurePopUpView() {
@@ -88,10 +95,11 @@ class MainViewController: UIViewController {
     }
     
     @objc private func openMenuAction() {
-        addChild(menuVC)
         view.addSubview(menuVC.view)
-        navigationController?.present(menuVC, animated: true)
         configureMenuViewControllerLayout()
+        //menuVC.modalPresentationStyle = .pageSheet
+        //navigationController?.present(menuVC, animated: true)
+        //present(navigationController, animated: true)
     }
 }
 
@@ -99,6 +107,7 @@ extension MainViewController: PopUpViewDelegate {
     func popUpView(_ view: PopUpView, didTapButton sender: UIButton, atTime timestamp: Date) {
         timestamps.append(timestamp)
         reloadTextView()
+        menuVC.configureTextView(with: timestamps)
     }
 }
 
@@ -106,10 +115,18 @@ extension MainViewController: MenuViewControllerDelegate {
     func menuViewController(_ viewController: MenuViewController, didTapButton sender: UIButton, atTime timestamp: Date){
         timestamps.append(timestamp)
         reloadTextView()
+        popUpView.configureTextView(with: timestamps)
     }
     
     func menuViewControllerDidSwipeLeft(_ viewController: MenuViewController) {
-        navigationController?.popViewController(animated: true)
+        let menuVCWidth = self.menuVC.view.frame.width
+        self.menuVCLeadingConstraint.constant = -menuVCWidth
+        UIView.animate(withDuration: 10, animations: { [weak self] in
+            guard let `self` = self else { return }
+            self.menuVC.view.layoutIfNeeded()
+        }, completion: { [weak self] _ in
+            self?.menuVC.view.removeFromSuperview()
+        })
     }
 }
 

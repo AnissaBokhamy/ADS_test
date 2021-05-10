@@ -15,7 +15,7 @@ protocol MenuViewControllerDelegate: class {
 class MenuViewController: UIViewController {
     
     // MARK: - Constants
-    let blueColor = UIColor(red: 9, green: 83, blue: 254, alpha: 1)
+    let blueColor = UIColor(red: 1/255, green: 110/255, blue: 255/255, alpha: 0.7)
     let textSize: CGFloat = 14
     
     // MARK: - Properties
@@ -23,8 +23,8 @@ class MenuViewController: UIViewController {
     
     private var timestamps: [Date] = []
     
-    private var button: UIButton!
-    private var textView: UITextView!
+    private var button = UIButton()
+    private var textView = UITextView()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -33,46 +33,61 @@ class MenuViewController: UIViewController {
         view.backgroundColor = blueColor
         configureButton()
         configureTextView()
+        configureSwipeLeft()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-        configureTextViewLayout()
         configureButtonLayout()
-        configureSwipeLeft()
+        configureTextViewLayout()
     }
     
     // MARK: - Helpers
     private func configureButton() {
         button = UIButton()
+        button.titleLabel?.numberOfLines = 1
+        button.titleLabel?.lineBreakMode = .byWordWrapping
+        button.contentMode = .center
         button.setTitle("Button", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.sizeToFit()
+        button.backgroundColor = .clear
+        button.layer.borderColor = UIColor.systemBlue.cgColor
+        button.layer.borderWidth = 1
         button.addTarget(self, action: #selector(buttonTapAction(sender:)), for: .touchUpInside)
         
         view.addSubview(button)
     }
     
     private func configureButtonLayout() {
+        button.sizeToFit()
         NSLayoutConstraint.activate([
-            button.centerYAnchor.constraint(equalTo: textView.centerYAnchor),
+            button.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             button.bottomAnchor.constraint(equalTo: textView.topAnchor)
         ])
+        button.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func configureTextView() {
         textView = UITextView()
-        
+        textView.backgroundColor = .clear
+        textView.layer.borderColor = UIColor.systemBlue.cgColor
+        textView.layer.borderWidth = 1
         reloadTextView()
+
         view.addSubview(textView)
     }
     
     private func configureTextViewLayout() {
         NSLayoutConstraint.activate([
-            textView.heightAnchor.constraint(equalToConstant: 90),
-            textView.widthAnchor.constraint(equalToConstant: 165.5),
-            textView.topAnchor.constraint(equalTo: view.topAnchor),
-            textView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            textView.heightAnchor.constraint(equalToConstant: 100),
+            textView.topAnchor.constraint(equalTo: button.bottomAnchor),
+            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
+            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5)
         ])
+        textView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func configureTextView(with timestamps: [Date]) {

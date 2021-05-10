@@ -18,7 +18,7 @@ class PopUpView: UIView {
     
     // MARK: - Constants
     let nibName = "PopUpXib"
-    let textSize: CGFloat = 12
+    let textSize: CGFloat = 14
     
     // MARK: - Properties
     weak var delegate: PopUpViewDelegate?
@@ -30,6 +30,7 @@ class PopUpView: UIView {
         super.init(frame: frame)
         
         setup()
+        configureLayer()
         reloadTextView()
     }
     
@@ -37,6 +38,7 @@ class PopUpView: UIView {
         super.init(coder: aDecoder)
 
         setup()
+        configureLayer()
         reloadTextView()
     }
     
@@ -56,6 +58,15 @@ class PopUpView: UIView {
     }
     
     // MARK: - Helpers
+    private func configureLayer() {
+        layer.borderColor = UIColor.systemBlue.cgColor
+        layer.borderWidth = 1
+        button.layer.borderColor = UIColor.systemBlue.cgColor
+        button.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.systemBlue.cgColor
+        textView.layer.borderWidth = 1
+    }
+
     func configureTextView(with timestamps: [Date]) {
         self.timestamps = timestamps
         reloadTextView()
