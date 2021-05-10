@@ -16,7 +16,6 @@ class MenuViewController: UIViewController {
     
     // MARK: - Constants
     let blueColor = UIColor(red: 1/255, green: 110/255, blue: 255/255, alpha: 0.7)
-    let textSize: CGFloat = 14
     
     // MARK: - Properties
     weak var delegate: MenuViewControllerDelegate?
@@ -44,6 +43,22 @@ class MenuViewController: UIViewController {
     }
     
     // MARK: - Helpers
+    func configureTextView(with timestamps: [Date]) {
+        self.timestamps = timestamps
+        reloadTextView()
+    }
+    
+    private func reloadTextView() {
+        textView.attributedText = TextViewHelper.generateAttributedText(for: timestamps)
+    }
+    
+    private func configureSwipeLeft() {
+        let swipeLeftGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftAction))
+        swipeLeftGestureRecognizer.direction = .left
+        view.addGestureRecognizer(swipeLeftGestureRecognizer)
+    }
+    
+    // MARK: - Button configurations
     private func configureButton() {
         button = UIButton()
         button.accessibilityIdentifier = "menuButton"
@@ -72,6 +87,7 @@ class MenuViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    // MARK: - TextView configurations
     private func configureTextView() {
         textView = UITextView()
         textView.accessibilityIdentifier = "menuTextView"
@@ -94,31 +110,7 @@ class MenuViewController: UIViewController {
         textView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func configureTextView(with timestamps: [Date]) {
-        self.timestamps = timestamps
-        reloadTextView()
-    }
-    
-    private func reloadTextView() {
-        let headerText = "UIScrollView\n\n"
-        let timestampLines = timestamps.reversed().compactMap{ "\($0.formatWithDateAndTime())\n" }.joined()
-        let text = headerText + timestampLines
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .center
-        let attributedText = NSMutableAttributedString(string: text, attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: textSize), NSAttributedString.Key.paragraphStyle: paragraphStyle])
-        let headerTextRange = NSRange(text.range(of: headerText)!, in: text)
-        attributedText.addAttributes([.font: UIFont.boldSystemFont(ofSize: textSize)], range: headerTextRange)
-
-        textView.attributedText = attributedText
-    }
-    
-    private func configureSwipeLeft() {
-        let swipeLeftGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftAction))
-        swipeLeftGestureRecognizer.direction = .left
-        view.addGestureRecognizer(swipeLeftGestureRecognizer)
-    }
-    
+    // MARK: - Obj-C functions
     @objc private func swipeLeftAction() {
         delegate?.menuViewControllerDidSwipeLeft(self)
     }

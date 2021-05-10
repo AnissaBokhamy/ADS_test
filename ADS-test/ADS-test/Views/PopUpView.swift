@@ -11,14 +11,14 @@ protocol PopUpViewDelegate: class {
 }
 
 class PopUpView: UIView {
+
     // MARK: - IBOutlets
-    @IBOutlet var contentView: UIView!
+    @IBOutlet private var contentView: UIView!
     @IBOutlet weak private var button: UIButton!
     @IBOutlet weak private var textView: UITextView!
     
     // MARK: - Constants
     let nibName = "PopUpXib"
-    let textSize: CGFloat = 14
     
     // MARK: - Properties
     weak var delegate: PopUpViewDelegate?
@@ -29,7 +29,7 @@ class PopUpView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setup()
+        setupView()
         configureLayer()
         reloadTextView()
     }
@@ -37,14 +37,15 @@ class PopUpView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        setup()
+        setupView()
         configureLayer()
         button.accessibilityIdentifier = "popupButton"
         textView.accessibilityIdentifier = "popupTextView"
         reloadTextView()
     }
     
-    private func setup() {
+    // MARK: - Nib Helpers
+    private func setupView() {
         guard let nibView = loadViewFromNib() else { return }
         contentView = nibView
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -75,17 +76,7 @@ class PopUpView: UIView {
     }
     
     private func reloadTextView() {
-        let headerText = "UIScrollView\n\n"
-        let timestampLines = timestamps.reversed().compactMap{ "\($0.formatWithDateAndTime())\n" }.joined()
-        let text = headerText + timestampLines
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .center
-        let attributedText = NSMutableAttributedString(string: text, attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: textSize), NSAttributedString.Key.paragraphStyle: paragraphStyle])
-        let headerTextRange = NSRange(text.range(of: headerText)!, in: text)
-        attributedText.addAttributes([.font: UIFont.boldSystemFont(ofSize: textSize)], range: headerTextRange)
-
-        textView.attributedText = attributedText
+        textView.attributedText = TextViewHelper.generateAttributedText(for: timestamps)
     }
 
     // MARK: - IBActions

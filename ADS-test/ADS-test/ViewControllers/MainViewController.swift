@@ -14,10 +14,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak private var textView: UITextView!
     @IBOutlet weak private var popUpView: PopUpView!
     
-    // MARK: - Constants
-    let defaultBlue = CGColor(red: 35, green: 56, blue: 152, alpha: 1)
-    let textSize: CGFloat = 14
-    
     // MARK: - Properties
     private var timestamps: [Date] = []
 
@@ -48,6 +44,17 @@ class MainViewController: UIViewController {
         textView.layer.borderWidth = 1
     }
     
+    private func reloadTextView() {
+        textView.attributedText = TextViewHelper.generateAttributedText(for: timestamps)
+    }
+    
+    private func configureSwipeFromLeft() {
+        let swipeGestureRecognizerRight = UISwipeGestureRecognizer(target: self, action: #selector(openMenuAction))
+        swipeGestureRecognizerRight.direction = .right
+        view.addGestureRecognizer(swipeGestureRecognizerRight)
+    }
+    
+    // MARK: - MenuViewController Helpers
     private func configureMenuViewController() {
         menuVC = MenuViewController()
         menuVC.delegate = self
@@ -64,28 +71,15 @@ class MainViewController: UIViewController {
         menuVC.view.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    // MARK: - PopUpView Helpers
     private func configurePopUpView() {
         popUpView.delegate = self
     }
     
-    private func reloadTextView() {
-        let headerText = "UIScrollView\n\n"
-        let timestampLines = timestamps.reversed().compactMap{ "\($0.formatWithDateAndTime())\n" }.joined()
-        let text = headerText + timestampLines
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .center
-        let attributedText = NSMutableAttributedString(string: text, attributes: [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: textSize), NSAttributedString.Key.paragraphStyle: paragraphStyle])
-        let headerTextRange = NSRange(text.range(of: headerText)!, in: text)
-        attributedText.addAttributes([.font: UIFont.boldSystemFont(ofSize: textSize)], range: headerTextRange)
-
-        textView.attributedText = attributedText
-    }
-    
-    private func configureSwipeFromLeft() {
-        let swipeGestureRecognizerRight = UISwipeGestureRecognizer(target: self, action: #selector(openMenuAction))
-        swipeGestureRecognizerRight.direction = .right
-        view.addGestureRecognizer(swipeGestureRecognizerRight)
+    // MARK: - Obj-C functions
+    @objc private func openMenuAction() {
+        view.addSubview(menuVC.view)
+        configureMenuViewControllerLayout()
     }
     
     // MARK: - IBActions
@@ -95,16 +89,10 @@ class MainViewController: UIViewController {
         popUpView.configureTextView(with: timestamps)
         menuVC.configureTextView(with: timestamps)
     }
-    
-    @objc private func openMenuAction() {
-        view.addSubview(menuVC.view)
-        configureMenuViewControllerLayout()
-        //menuVC.modalPresentationStyle = .pageSheet
-        //navigationController?.present(menuVC, animated: true)
-        //present(navigationController, animated: true)
-    }
 }
 
+
+// MARK: - PopUpViewDelegate
 extension MainViewController: PopUpViewDelegate {
     func popUpView(_ view: PopUpView, didTapButton sender: UIButton, atTime timestamp: Date) {
         timestamps.append(timestamp)
@@ -113,6 +101,7 @@ extension MainViewController: PopUpViewDelegate {
     }
 }
 
+// MARK: - MenuViewControllerDelegate
 extension MainViewController: MenuViewControllerDelegate {
     func menuViewController(_ viewController: MenuViewController, didTapButton sender: UIButton, atTime timestamp: Date){
         timestamps.append(timestamp)

@@ -21,6 +21,7 @@
 		F4956EB92646A26A004B0DD9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4956EB82646A26A004B0DD9 /* MenuViewController.swift */; };
 		F4956ED72649C363004B0DD9 /* ADS_testUITestsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4956ED62649C363004B0DD9 /* ADS_testUITestsConstants.swift */; };
 		F4956EE52649C610004B0DD9 /* ADS_testUITestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4956EE42649C610004B0DD9 /* ADS_testUITestsHelper.swift */; };
+		F4956EED2649D834004B0DD9 /* TextViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4956EEC2649D833004B0DD9 /* TextViewHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		F4956EB82646A26A004B0DD9 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		F4956ED62649C363004B0DD9 /* ADS_testUITestsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADS_testUITestsConstants.swift; sourceTree = "<group>"; };
 		F4956EE42649C610004B0DD9 /* ADS_testUITestsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADS_testUITestsHelper.swift; sourceTree = "<group>"; };
+		F4956EEC2649D833004B0DD9 /* TextViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,12 +115,11 @@
 			children = (
 				F4956E7626434212004B0DD9 /* AppDelegate.swift */,
 				F4956E7826434212004B0DD9 /* SceneDelegate.swift */,
-				F4956E7A26434212004B0DD9 /* MainViewController.swift */,
-				F4956EB82646A26A004B0DD9 /* MenuViewController.swift */,
+				F4956EF22649D96A004B0DD9 /* Utils */,
+				F4956EF12649D954004B0DD9 /* ViewControllers */,
 				F4956E7C26434212004B0DD9 /* MainStoryBoard.storyboard */,
-				F4956EA926449085004B0DD9 /* PopUpXib.xib */,
-				F4956EAE26449466004B0DD9 /* PopUpView.swift */,
-				F4956EB32646978D004B0DD9 /* DateExtension.swift */,
+				F4956EF32649D97D004B0DD9 /* Views */,
+				F4956EF42649D98F004B0DD9 /* Xib */,
 				F4956E7F26434216004B0DD9 /* Assets.xcassets */,
 				F4956E8126434216004B0DD9 /* LaunchScreen.storyboard */,
 				F4956E8426434216004B0DD9 /* Info.plist */,
@@ -144,6 +145,40 @@
 				F4956E9A26434216004B0DD9 /* Info.plist */,
 			);
 			path = "ADS-testUITests";
+			sourceTree = "<group>";
+		};
+		F4956EF12649D954004B0DD9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F4956E7A26434212004B0DD9 /* MainViewController.swift */,
+				F4956EB82646A26A004B0DD9 /* MenuViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F4956EF22649D96A004B0DD9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F4956EB32646978D004B0DD9 /* DateExtension.swift */,
+				F4956EEC2649D833004B0DD9 /* TextViewHelper.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F4956EF32649D97D004B0DD9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4956EAE26449466004B0DD9 /* PopUpView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F4956EF42649D98F004B0DD9 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				F4956EA926449085004B0DD9 /* PopUpXib.xib */,
+			);
+			path = Xib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +314,7 @@
 			files = (
 				F4956E7B26434212004B0DD9 /* MainViewController.swift in Sources */,
 				F4956EB92646A26A004B0DD9 /* MenuViewController.swift in Sources */,
+				F4956EED2649D834004B0DD9 /* TextViewHelper.swift in Sources */,
 				F4956EB42646978D004B0DD9 /* DateExtension.swift in Sources */,
 				F4956EAF26449466004B0DD9 /* PopUpView.swift in Sources */,
 				F4956E7726434212004B0DD9 /* AppDelegate.swift in Sources */,
