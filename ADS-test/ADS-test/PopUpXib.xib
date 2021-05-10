@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopUpView" customModule="ADS_test" customModuleProvider="target">
+            <connections>
+                <outlet property="button" destination="dei-O7-wNZ" id="RTx-ci-naF"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="U8v-4R-Hfc"/>
+                <outlet property="textView" destination="7Zg-0x-jOg" id="8tT-Hq-qEr"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dei-O7-wNZ">
+                    <rect key="frame" x="313.5" y="5" width="46" height="30"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonTapAction:" destination="-1" eventType="touchUpInside" id="PEc-H7-M3r"/>
+                    </connections>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" allowsEditingTextAttributes="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Zg-0x-jOg">
+                    <rect key="frame" x="253.5" y="35" width="165.5" height="90"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="90" id="0Q5-Tu-rbh"/>
+                        <constraint firstAttribute="width" constant="165.5" id="L2k-ck-iod"/>
+                    </constraints>
+                    <attributedString key="attributedText">
+                        <fragment content="UIScrollView">
+                            <attributes>
+                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" metaFont="system" size="14"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" red="0.99215686274509807" green="0.54509803921568623" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="dei-O7-wNZ" firstAttribute="centerX" secondItem="7Zg-0x-jOg" secondAttribute="centerX" id="52G-O5-DPy"/>
+                <constraint firstItem="dei-O7-wNZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="Iag-CB-H5b"/>
+                <constraint firstItem="dei-O7-wNZ" firstAttribute="bottom" secondItem="7Zg-0x-jOg" secondAttribute="top" id="KId-Sj-smk"/>
+                <constraint firstItem="7Zg-0x-jOg" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" constant="5" id="d0x-di-iKl"/>
+            </constraints>
+            <point key="canvasLocation" x="-23" y="78"/>
+        </view>
+    </objects>
+</document>

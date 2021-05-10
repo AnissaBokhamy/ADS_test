@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="ADS_test" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzK-VU-pCP">
+                                <rect key="frame" x="288" y="49" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTapAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n44-BQ-V3h"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" allowsEditingTextAttributes="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wv-1k-NCY">
+                                <rect key="frame" x="228.5" y="79" width="165.5" height="90"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="vc2-dB-FGT"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="UIScrollView">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39H-4b-hHM" customClass="PopUpView" customModule="ADS_test" customModuleProvider="target">
+                                <rect key="frame" x="30" y="557" width="364" height="275"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="275" id="zKb-WU-TX8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.36862745098039218" green="0.68235294117647061" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="fzK-VU-pCP" firstAttribute="centerX" secondItem="4wv-1k-NCY" secondAttribute="centerX" id="0LA-Ig-6cE"/>
+                            <constraint firstItem="4wv-1k-NCY" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.4" id="1cm-F4-JZB"/>
+                            <constraint firstItem="39H-4b-hHM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="IPD-2G-lh3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="39H-4b-hHM" secondAttribute="trailing" constant="20" id="JTQ-eF-ALo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4wv-1k-NCY" secondAttribute="trailing" constant="20" id="YDe-3b-pUY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="39H-4b-hHM" secondAttribute="bottom" constant="30" id="YcI-cS-aoc"/>
+                            <constraint firstItem="fzK-VU-pCP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="YdY-XJ-e3f"/>
+                            <constraint firstItem="4wv-1k-NCY" firstAttribute="top" secondItem="fzK-VU-pCP" secondAttribute="bottom" id="cDx-1v-WYn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="fzK-VU-pCP" id="0uo-UK-FIy"/>
+                        <outlet property="popUpView" destination="39H-4b-hHM" id="RC1-YG-Por"/>
+                        <outlet property="textView" destination="4wv-1k-NCY" id="Buv-uT-YQv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23.188405797101453" y="62.946428571428569"/>
+        </scene>
+    </scenes>
+</document>
