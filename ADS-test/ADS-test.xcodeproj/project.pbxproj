@@ -19,7 +19,8 @@
 		F4956EAF26449466004B0DD9 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4956EAE26449466004B0DD9 /* PopUpView.swift */; };
 		F4956EB42646978D004B0DD9 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4956EB32646978D004B0DD9 /* DateExtension.swift */; };
 		F4956EB92646A26A004B0DD9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4956EB82646A26A004B0DD9 /* MenuViewController.swift */; };
-		F4956ED72649C363004B0DD9 /* ADS_testUIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4956ED62649C363004B0DD9 /* ADS_testUIHelper.swift */; };
+		F4956ED72649C363004B0DD9 /* ADS_testUITestsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4956ED62649C363004B0DD9 /* ADS_testUITestsConstants.swift */; };
+		F4956EE52649C610004B0DD9 /* ADS_testUITestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4956EE42649C610004B0DD9 /* ADS_testUITestsHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +59,8 @@
 		F4956EAE26449466004B0DD9 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		F4956EB32646978D004B0DD9 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		F4956EB82646A26A004B0DD9 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		F4956ED62649C363004B0DD9 /* ADS_testUIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADS_testUIHelper.swift; sourceTree = "<group>"; };
+		F4956ED62649C363004B0DD9 /* ADS_testUITestsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADS_testUITestsConstants.swift; sourceTree = "<group>"; };
+		F4956EE42649C610004B0DD9 /* ADS_testUITestsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADS_testUITestsHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				F4956E9826434216004B0DD9 /* ADS_testUITests.swift */,
-				F4956ED62649C363004B0DD9 /* ADS_testUIHelper.swift */,
+				F4956EE42649C610004B0DD9 /* ADS_testUITestsHelper.swift */,
+				F4956ED62649C363004B0DD9 /* ADS_testUITestsConstants.swift */,
 				F4956E9A26434216004B0DD9 /* Info.plist */,
 			);
 			path = "ADS-testUITests";
@@ -295,7 +298,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4956ED72649C363004B0DD9 /* ADS_testUIHelper.swift in Sources */,
+				F4956ED72649C363004B0DD9 /* ADS_testUITestsConstants.swift in Sources */,
+				F4956EE52649C610004B0DD9 /* ADS_testUITestsHelper.swift in Sources */,
 				F4956E9926434216004B0DD9 /* ADS_testUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

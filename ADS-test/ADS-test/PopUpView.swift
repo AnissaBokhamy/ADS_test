@@ -39,6 +39,8 @@ class PopUpView: UIView {
 
         setup()
         configureLayer()
+        button.accessibilityIdentifier = "popupButton"
+        textView.accessibilityIdentifier = "popupTextView"
         reloadTextView()
     }
     

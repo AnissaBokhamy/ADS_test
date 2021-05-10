@@ -22,13 +22,40 @@ class ADS_testUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testMainViewButton() throws {
         let app = XCUIApplication()
         app.launch()
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let mainButtonAddsTimestampToAllTextViews =
+            ADS_testUITestsHelper.buttonAddsTimestampToAllTextViews(
+                buttonIdentifier: UITestsConstants.Buttons.mainButton,
+                in: app
+            )
+        XCTAssertTrue(mainButtonAddsTimestampToAllTextViews)
+    }
+    
+    func testPopupViewButton() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        let popupButtonAddsTimestampToAllTextViews =
+            ADS_testUITestsHelper.buttonAddsTimestampToAllTextViews(
+                buttonIdentifier: UITestsConstants.Buttons.popupButton,
+                in: app
+            )
+        XCTAssertTrue(popupButtonAddsTimestampToAllTextViews)
+    }
+    
+    func testMenuViewButton() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        let menuButtonAddsTimestampToAllTextViews =
+            ADS_testUITestsHelper.buttonAddsTimestampToAllTextViews(
+                buttonIdentifier: UITestsConstants.Buttons.menuButton,
+                in: app
+            )
+        XCTAssertTrue(menuButtonAddsTimestampToAllTextViews)
     }
 
     func testLaunchPerformance() throws {

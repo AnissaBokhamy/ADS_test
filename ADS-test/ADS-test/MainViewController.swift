@@ -32,6 +32,8 @@ class MainViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         configureLayer()
+        button.accessibilityIdentifier = "mainButton"
+        textView.accessibilityIdentifier = "mainTextView"
         reloadTextView()
         configureMenuViewController()
         configurePopUpView()

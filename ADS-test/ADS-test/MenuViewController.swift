@@ -46,6 +46,8 @@ class MenuViewController: UIViewController {
     // MARK: - Helpers
     private func configureButton() {
         button = UIButton()
+        button.accessibilityIdentifier = "menuButton"
+        
         button.titleLabel?.numberOfLines = 1
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.contentMode = .center
@@ -72,6 +74,8 @@ class MenuViewController: UIViewController {
     
     private func configureTextView() {
         textView = UITextView()
+        textView.accessibilityIdentifier = "menuTextView"
+        
         textView.backgroundColor = .clear
         textView.layer.borderColor = UIColor.systemBlue.cgColor
         textView.layer.borderWidth = 1
